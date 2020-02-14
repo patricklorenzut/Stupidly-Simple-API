@@ -1,0 +1,484 @@
+* {
+    margin: 0px;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .clearfix {
+    clear: both;
+    float: none !important;
+  }
+  
+  img {
+    max-width: 100%;
+    border: none;
+  }
+  
+  html {
+    font-size: 15px;
+    height: 100%;
+    min-width: 300px;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga" on;
+    text-rendering: optimizeLegibility;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  
+  @media screen and (min-width: 370px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  #ssa-chat-bubble-wrapper {
+    display: block !important;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f6f6f6;
+    z-index: 2;
+  }
+  
+  @media screen and (min-width: 370px) {
+    #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header {
+    border-bottom: 1px solid #eaeced;
+    -webkit-box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
+    position: relative;
+    background: #FD6153;
+    color: white;
+    padding: 1em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header .close {
+    position: absolute;
+    cursor: pointer;
+    -webkit-opacity: 0.45;
+    -ms-opacity: 0.45;
+    -moz-opacity: 0.45;
+    -o-opacity: 0.45;
+    opacity: 0.45;
+    right: 1em;
+    top: 1em;
+    bottom: 1em;
+    width: 2em;
+    text-align: center;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header .close img {
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 50%;
+    margin-top: -.5em;
+    left: 50%;
+    margin-left: -.5em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header .close:hover {
+    -webkit-opacity: 1;
+    -ms-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header strong {
+    vertical-align: middle;
+    font-weight: 500;
+    margin-left: .75em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header span {
+    vertical-align: middle;
+    float: right;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: none;
+  }
+  
+  @media screen and (min-width: 370px) {
+    #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-mask {
+      border-radius: 8px;
+    }
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email p {
+    line-height: 1.3em;
+    padding: 1.5rem 5.25rem 1.5rem 1.25rem;
+    background: #FD6153;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email p strong {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email input {
+    background: white;
+  }
+  
+  @media screen and (min-width: 768px) and (min-height: 700px) {
+    #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages {
+    padding: 0 1em;
+    position: absolute;
+    top: 4.5em;
+    bottom: 4.5em;
+    overflow-y: scroll;
+    left: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages > div > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    width: 100%;
+    margin: .25em 0;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages > div > div.default {
+    padding: .5em;
+    -webkit-opacity: 0.5;
+    -ms-opacity: 0.5;
+    -moz-opacity: 0.5;
+    -o-opacity: 0.5;
+    opacity: 0.5;
+    line-height: 1.3em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages > div > div > div {
+    margin-bottom: .25em;
+    border-radius: 20px;
+    max-width: 100%;
+    background-color: white;
+    padding: .75rem 1rem;
+    border-radius: 20px;
+    word-wrap: break-word;
+    line-height: 1.35em;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: .9em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .from {
+    padding-right: 40px;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .from > div {
+    border-bottom-left-radius: 0;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .to {
+    padding-left: 40px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .to > div {
+    background-color: #FD6153;
+    color: white;
+    border-bottom-right-radius: 0;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input textarea,
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input input {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    resize: none;
+    line-height: 1.3;
+    padding: 1.25rem;
+    background: transparent;
+    outline: none;
+    border-top: 1px solid #eaeced;
+    height: 3.75rem;
+    min-height: 3.75rem;
+    max-height: 16rem;
+    padding-right: 6em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input textarea:focus,
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input input:focus {
+    border-color: #333;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input .submit-button {
+    position: absolute;
+    right: 1rem;
+    background: #0481ec;
+    padding: .5em;
+    border-radius: 4px;
+    height: 2em;
+    bottom: .9em;
+    width: 3em;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input .submit-button img {
+    height: 1em;
+    width: auto;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input .submit-button:hover {
+    -webkit-filter: brightness(85%);
+    -ms-filter: brightness(85%);
+    -moz-filter: brightness(85%);
+    -o-filter: brightness(85%);
+    filter: brightness(85%);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #ssa-chat-bubble-email {
+    display: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat .submit-button {
+    display: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #by {
+    font-size: .8em;
+    position: absolute;
+    right: 1rem;
+    bottom: .8rem;
+    width: 80px;
+    text-align: center;
+    line-height: 1.2em;
+    -webkit-opacity: 0.5;
+    -ms-opacity: 0.5;
+    -moz-opacity: 0.5;
+    -o-opacity: 0.5;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    color: #99a0a5;
+    display: block;
+    text-decoration: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #by span {
+    color: #FD6153;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #by:hover {
+    -webkit-opacity: 1;
+    -ms-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-header,
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-messages {
+    -webkit-filter: blur(3px);
+            filter: blur(3px);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-chat {
+    display: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-get-email,
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-mask {
+    display: block;
+  }
+  
+  #ssa-chat-bubble-wrapper .ssa-chat-bubble-content {
+    line-height: 1.4em;
+  }
+  
+  #ssa-chat-bubble-wrapper .ssa-chat-bubble-content p {
+    margin-bottom: 1.4em;
+  }
+  
+  #ssa-chat-bubble-wrapper .ssa-chat-bubble-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-teaser {
+    font-size: 14px;
+    background: white;
+    padding: 1.8em;
+    border-radius: 20px;
+    -moz-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 100%;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-teaser:hover {
+    background-color: #f6f6f6;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button {
+    position: absolute;
+    display: inline-block;
+    background: #FD6153;
+    width: 80px;
+    height: 60px;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button img,
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close {
+    -webkit-transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button img {
+    width: 32px;
+    height: 29px;
+    position: absolute;
+    top: 18px;
+    left: 46%;
+    margin-left: -16px;
+    -webkit-opacity: 1;
+    -ms-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close {
+    -webkit-opacity: 0;
+    -ms-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: rotate(-45deg) scale(1);
+            transform: rotate(-45deg) scale(1);
+    position: absolute;
+    top: 0;
+    right: 14px;
+    width: 4.28571em;
+    height: 4.28571em;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:before,
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:after {
+    position: absolute;
+    top: 1.5em;
+    right: 2.07143em;
+    content: ' ';
+    height: 1.35714em;
+    width: 0.14286em;
+    background-color: #fff;
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:before {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:after {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button.open img {
+    -webkit-opacity: 0;
+    -ms-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: rotate(45deg) scale(0.7);
+            transform: rotate(45deg) scale(0.7);
+  }
+  
+  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button.open .close {
+    -webkit-opacity: 1;
+    -ms-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  
+  
