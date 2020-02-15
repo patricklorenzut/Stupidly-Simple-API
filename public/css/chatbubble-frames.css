@@ -80,7 +80,7 @@
   
   @media screen and (min-width: 768px) and (min-height: 700px) {
     #ssa-chat-bubble-chat-frame-wrapper {
-      top: 50px;
+      top: 150px;
       right: 30px;
       bottom: 100px;
       border-radius: 8px;
