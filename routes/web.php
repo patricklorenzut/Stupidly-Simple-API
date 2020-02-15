@@ -11,6 +11,23 @@
 |
 */
 
+//version info
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+
+//unprotected routes
+$router->post('register', 'AuthController@register');
+$router->post('login', 'AuthController@login');
+
+$router->get('/user/{id}/chatBubbleApps',  ['uses' => 'ChatBubbleController@showUserChatBubbleApps']);
+$router->post('/chat/{id}',  ['uses' => 'ChatBubbleController@createMessage']);
+
+//protected routes
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('/chats',  function () use ($router) {
+        echo 'test';
+    });
+    
 });

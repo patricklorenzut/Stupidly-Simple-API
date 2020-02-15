@@ -59,7 +59,7 @@ var ssa_chatbubble = function () {
         box_frame = document.createElement('iframe');
         box_frame.setAttribute('id','ssa-chat-bubble-chat-frame')
         box_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssa-chat-bubble-wrapper" style="display:none;"> <div id="ssa-chat-bubble-full"> <div id="ssa-chat-bubble-header"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssa-chat-bubble-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssa-chat-bubble-mask"></div><div id="ssa-chat-bubble-get-email" class="ssa-chat-bubble-has-input"><p>' + settings.email_required_message + '</p><input type="email" placeholder="your@email.com"/> <span class="submit-button" id="email-submit-button"> <img src="' + base_url + '/img/send.png" alt="" width="32" height="29"/> </span> </div><div id="ssa-chat-bubble-chat" class="ssa-chat-bubble-has-input"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssa-chat-bubble-message"></textarea><input type="email" required name="email" id="ssa-chat-bubble-email"/> <a id="by" href="https://stupidlysimple.app/?utm_source=chat_bubble_widget" target="_blank">powered by <span>stupidly simple</span></a> <span class="submit-button" id="message-submit-button"> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div></div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssa-chat-bubble-wrapper" style="display:none;"> <div id="ssa-chat-bubble-full"> <div id="ssa-chat-bubble-header"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssa-chat-bubble-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssa-chat-bubble-mask"></div><div id="ssa-chat-bubble-get-email" class="ssa-chat-bubble-has-input"><p>' + settings.email_required_message + '</p><input type="email" id="ssa-chat-bubble-email-input" placeholder="your@email.com"/> <span class="submit-button" id="email-submit-button"> <img src="' + base_url + '/img/send.png" alt="" width="32" height="29"/> </span> </div><div id="ssa-chat-bubble-chat" class="ssa-chat-bubble-has-input"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssa-chat-bubble-message"></textarea><input type="email" required name="email" id="ssa-chat-bubble-email"/> <a id="by" href="https://stupidlysimple.app/?utm_source=chat_bubble_widget" target="_blank">powered by <span>stupidly simple</span></a> <span class="submit-button" id="message-submit-button"> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div></div></div></body>';
         box_frame_wrapper.appendChild(box_frame);
         box_frame.contentWindow.document.open();
         box_frame.contentWindow.document.write(html);
@@ -116,8 +116,53 @@ var ssa_chatbubble = function () {
 
         message_area.focus();
         message_area.select();
-        resize();        
+        resize(); 
+        
+        box_frame.contentDocument.getElementById("message-submit-button").click(function(){
+            console.log('message submit button')
+            submit_textarea();
+        }); 
     }    
+
+    function submit_textarea(){
+        //check to see if we have an email address for this person.
+        if(settings.email){ //if so and it's fresh, send this message through.
+            submit_message();
+        }
+        else{ //if not, get the email.
+            box_frame.contentDocument.getElementById('chatthingy-full').classList.add('get-email');
+            box_frame.contentDocument.getElementById('ssa-chat-bubble-email-input').focus();
+            enter_email();
+        }
+    }
+
+    function enter_email(){
+        box_frame.contentDocument.getElementById('ssa-chat-bubble-email-input').addEventListener("click", function(e){
+            if(e.which == 13){  // the enter key code
+                e.preventDefault();
+                submit_email();
+            }
+        });
+        
+
+        box_frame.contentDocument.getElementById('email-submit-button').addEventListener("click", function(){
+            submit_email();
+        });
+        
+    }
+
+    function submit_email(){
+        // var email = chat_frame.find('#chatthingy-get-email input').val();
+        // if(is_valid_email_address(email)){
+        //     chat_frame.find('#chatthingy-full form input[name="email"]').val(email);
+        //     Cookies.set('chatthingy-email-' + settings.app_id, email, { expires: 365 });
+        //     settings.email = email;
+        //     submit_message();            
+        // }else{
+        //     //flash an error
+        //     console.log('invalid email address');
+        // }     
+    }
 
     /******** starting point for your widget ********/
     function main() {
