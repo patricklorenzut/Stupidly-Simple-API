@@ -30,7 +30,7 @@ $router->post('/chat',  ['uses' => 'ChatBubbleController@createMessage']);
 
 //protected routes
 $router->group(['middleware' => 'auth'], function () use ($router) {
-    $router->post('/me', 'UserController@profile');
+    $router->get('/me', 'UserController@profile');
     $router->post('/logout', 'UserController@logout');   
     $router->post('/chatBubbleApp',  ['uses' => 'ChatBubbleController@createChatBubbleApp']); 
 });
