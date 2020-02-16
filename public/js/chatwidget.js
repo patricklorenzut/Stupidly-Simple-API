@@ -24,10 +24,19 @@ var ssa_chatwidget = function () {
 
     }
 
-    function swap_colors(){
-        // box_frame.find('#chatthingy-get-email p').css('background-color',settings.color);            
-        // box_frame.find('#chatthingy-chat #by span').css('color',settings.color);
-        // button_frame.find('#chatthingy-button').css('background-color',settings.color);               box_frame.find('#chatthingy-header').css('background-color',settings.color);
+    function swap_colors(color){
+        var elements = button_content.getElementsByClassName('ssacw-bg-color');
+            for (var i in elements) {
+            if (elements.hasOwnProperty(i)) {
+                elements[i].style.backgroundColor = color;
+            }
+        }
+        var elements = box_content.getElementsByClassName('ssacw-bg-color');
+            for (var i in elements) {
+            if (elements.hasOwnProperty(i)) {
+                elements[i].style.backgroundColor = color;
+            }
+        }
     }
 
     function setup_button_frame(){
@@ -41,7 +50,7 @@ var ssa_chatwidget = function () {
         button_frame = document.createElement('iframe');
         button_frame.setAttribute('id','ssacw-button-frame')
         button_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssacw-wrapper" style="display:none;"><div id="ssacw-button"><img src="' + chat_image + '"/><div class="close"></div></div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssacw-wrapper" style="display:none;"><div id="ssacw-button" class="ssacw-bg-color"><img src="' + chat_image + '"/><div class="close"></div></div></div></body>';
         button_frame_wrapper.appendChild(button_frame);
         button_frame.contentWindow.document.open();
         button_frame.contentWindow.document.write(html);
@@ -59,7 +68,7 @@ var ssa_chatwidget = function () {
         box_frame = document.createElement('iframe');
         box_frame.setAttribute('id','ssacw-chat-frame')
         box_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssacw-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssacw-mask"></div><div id="ssacw-chat" class="ssacw-has-input"> <form action="' + base_url + '/contact" method="post"> <label>Message</label><textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> <a id="by" href="https://stupidlysimple.app/?utm_source=ssa_chatwidget" target="_blank">powered by <span>stupidly simple</span></a> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div><div id="ssacw-get-email" class="ssacw-has-input"><label>Email Address (only used to reply)</label><input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <span class="submit-button" id="email-submit-button"> Submit Message </span> </div></div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header" class="ssacw-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssacw-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssacw-mask"></div><div id="ssacw-chat" class="ssacw-has-input"> <form action="' + base_url + '/contact" method="post"> <label>Message</label><textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> <a id="by" href="https://stupidlysimple.app/?utm_source=ssa_chatwidget" target="_blank">powered by <span>stupidly simple</span></a> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div><div id="ssacw-get-email" class="ssacw-has-input"><label>Email Address (only used to reply)</label><input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <span id="email-submit-button" class="ssacw-bg-color"> Submit Message </span> </div></div></div></body>';
         box_frame_wrapper.appendChild(box_frame);
         box_frame.contentWindow.document.open();
         box_frame.contentWindow.document.write(html);
@@ -190,6 +199,11 @@ var ssa_chatwidget = function () {
 
             add_listeners()
         }
+
+        if(settings.color){
+            swap_colors(settings.color);
+        }
+            
 
     }
 

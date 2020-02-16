@@ -62,7 +62,6 @@
     -webkit-box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
             box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
     position: relative;
-    background: #3b3868;
     background-image: url(/img/chat-bg.png);
     background-size: cover;
     color: white;
@@ -138,12 +137,6 @@
     display: none;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-get-email p {
-    line-height: 1.3em;
-    padding: 1.5rem 1.25rem 1.5rem;
-    background: #3b3868;
-    color: rgba(255, 255, 255, 0.5);
-  }
   
   #ssacw-wrapper #ssacw-full #ssacw-get-email p strong {
     color: rgba(255, 255, 255, 0.8);
@@ -235,7 +228,7 @@
   }
   
   #ssacw-wrapper #ssacw-full #ssacw-messages .to > div {
-    background-color: #3b3868;
+    background: #3b3868;
     color: white;
     border-bottom-right-radius: 0;
   }
@@ -265,8 +258,7 @@
     border-color: #3b3868;
   }
   
-  #ssacw-wrapper #ssacw-full .ssacw-has-input .submit-button {
-    background: #3b3868;
+  #ssacw-wrapper #ssacw-full .ssacw-has-input #email-submit-button {
     margin-top: 2em;
     padding: 1em 2em;
     border-radius: 4px;
@@ -277,10 +269,11 @@
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    display: inline-block;
+    display: block;
     margin-left: 1.5rem;
+    margin-right: 1.5rem;
     color: #fff;
-    font-size: .9em;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
   }
@@ -398,7 +391,6 @@
   #ssacw-wrapper #ssacw-button {
     position: absolute;
     display: inline-block;
-    background: #3b3868;
     width: 80px;
     height: 60px;
     overflow: hidden;
@@ -497,8 +489,8 @@
     border-bottom: 3px solid;
     text-align: center;    
     display: none;
-    background: #3b3868;
     color: white;
+    background: #333;
   }
 
 
@@ -525,4 +517,8 @@
 
   #ssacw-wrapper.is-typing #ssacw-full #ssacw-get-email{
     display: block;
+  }
+
+  .ssacw-bg-color{
+    background-color: #333333;
   }
