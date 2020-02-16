@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChatBubbleEmailsTable extends Migration
+class CreateChatWidgetEmailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateChatBubbleEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chat_bubble_emails', function (Blueprint $table) {
+        Schema::create('chat_widget_emails', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('chat_bubble_app_id');
             
             $table->string('from_email');
             $table->text('contents');
@@ -24,7 +23,6 @@ class CreateChatBubbleEmailsTable extends Migration
 
             $table->timestamps();
             $table->index('user_id');
-            $table->index('chat_bubble_app_id');
         });
     }
 
@@ -35,6 +33,6 @@ class CreateChatBubbleEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chat_bubble_emails');
+        Schema::dropIfExists('chat_widget_emails');
     }
 }

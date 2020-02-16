@@ -20,9 +20,7 @@ $router->get('/', function () use ($router) {
 //unprotected routes
 $router->post('/register', 'AuthController@register');
 $router->post('/login', 'AuthController@login');
-
-$router->get('/user/{id}/chatBubbleApps',  ['uses' => 'ChatBubbleController@showUserChatBubbleApps']);
-$router->post('/chat',  ['uses' => 'ChatBubbleController@createMessage']);
+$router->post('/chat',  ['uses' => 'ChatWidgetController@createMessage']);
 
 //email test
 //$router->post('email/send/v1', 'MailgunController@emailTest');
@@ -32,5 +30,4 @@ $router->post('/chat',  ['uses' => 'ChatBubbleController@createMessage']);
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/me', 'UserController@profile');
     $router->post('/logout', 'UserController@logout');   
-    $router->post('/chatBubbleApp',  ['uses' => 'ChatBubbleController@createChatBubbleApp']); 
 });

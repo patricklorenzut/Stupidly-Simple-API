@@ -36,11 +36,11 @@
     }
   }
   
-  #ssa-chat-bubble-wrapper {
+  #ssacw-wrapper {
     display: block !important;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full {
+  #ssacw-wrapper #ssacw-full {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -51,13 +51,13 @@
   }
   
   @media screen and (min-width: 370px) {
-    #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat {
+    #ssacw-wrapper #ssacw-full #ssacw-chat {
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header {
+  #ssacw-wrapper #ssacw-full #ssacw-header {
     border-bottom: 1px solid #eaeced;
     -webkit-box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
             box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
@@ -70,7 +70,7 @@
     padding: 1em;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header .close {
+  #ssacw-wrapper #ssacw-full #ssacw-header .close {
     position: absolute;
     cursor: pointer;
     -webkit-opacity: 0.45;
@@ -84,7 +84,7 @@
     text-align: center;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header .close img {
+  #ssacw-wrapper #ssacw-full #ssacw-header .close img {
     width: 1em;
     height: 1em;
     position: absolute;
@@ -94,7 +94,7 @@
     margin-left: -.5em;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header .close:hover {
+  #ssacw-wrapper #ssacw-full #ssacw-header .close:hover {
     -webkit-opacity: 1;
     -ms-opacity: 1;
     -moz-opacity: 1;
@@ -102,18 +102,18 @@
     opacity: 1;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header strong {
+  #ssacw-wrapper #ssacw-full #ssacw-header strong {
     vertical-align: middle;
     font-weight: 500;
     margin-left: .75em;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-header span {
+  #ssacw-wrapper #ssacw-full #ssacw-header span {
     vertical-align: middle;
     float: right;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-mask {
+  #ssacw-wrapper #ssacw-full #ssacw-mask {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -124,12 +124,12 @@
   }
   
   @media screen and (min-width: 370px) {
-    #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-mask {
+    #ssacw-wrapper #ssacw-full #ssacw-mask {
       border-radius: 8px;
     }
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email {
+  #ssacw-wrapper #ssacw-full #ssacw-get-email {
     position: absolute;
     bottom: 1em;
     left: 0;
@@ -138,30 +138,30 @@
     display: none;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email p {
+  #ssacw-wrapper #ssacw-full #ssacw-get-email p {
     line-height: 1.3em;
     padding: 1.5rem 1.25rem 1.5rem;
     background: #3b3868;
     color: rgba(255, 255, 255, 0.5);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email p strong {
+  #ssacw-wrapper #ssacw-full #ssacw-get-email p strong {
     color: rgba(255, 255, 255, 0.8);
     display: block;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email input {
+  #ssacw-wrapper #ssacw-full #ssacw-get-email input {
     background: white;
   }
   
   @media screen and (min-width: 768px) and (min-height: 700px) {
-    #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-get-email {
+    #ssacw-wrapper #ssacw-full #ssacw-get-email {
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages {
+  #ssacw-wrapper #ssacw-full #ssacw-messages {
     padding: 0 1em;
     position: absolute;
     top: 4.5em;
@@ -178,7 +178,7 @@
             flex-direction: column-reverse;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages > div > div {
+  #ssacw-wrapper #ssacw-full #ssacw-messages > div > div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -193,7 +193,7 @@
     margin: .25em 0;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages > div > div.default {
+  #ssacw-wrapper #ssacw-full #ssacw-messages > div > div.default {
     padding: .5em;
     -webkit-opacity: 0.5;
     -ms-opacity: 0.5;
@@ -203,7 +203,7 @@
     line-height: 1.5em;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages > div > div > div {
+  #ssacw-wrapper #ssacw-full #ssacw-messages > div > div > div {
     margin-bottom: .25em;
     border-radius: 20px;
     max-width: 100%;
@@ -216,15 +216,15 @@
     font-size: .9em;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .from {
+  #ssacw-wrapper #ssacw-full #ssacw-messages .from {
     padding-right: 40px;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .from > div {
+  #ssacw-wrapper #ssacw-full #ssacw-messages .from > div {
     border-bottom-left-radius: 0;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .to {
+  #ssacw-wrapper #ssacw-full #ssacw-messages .to {
     padding-left: 40px;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
@@ -234,14 +234,14 @@
     align-items: flex-end;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-messages .to > div {
+  #ssacw-wrapper #ssacw-full #ssacw-messages .to > div {
     background-color: #3b3868;
     color: white;
     border-bottom-right-radius: 0;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input textarea,
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input input {
+  #ssacw-wrapper #ssacw-full .ssacw-has-input textarea,
+  #ssacw-wrapper #ssacw-full .ssacw-has-input input {
     width: 100%;
     border: none;
     font-size: 16px;
@@ -251,21 +251,21 @@
     background: #f6f6f6;
     outline: none;    
   }
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input input {
+  #ssacw-wrapper #ssacw-full .ssacw-has-input input {
     height: 3.75rem;
     min-height: 3.75rem;
     max-height: 16rem;
   }
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input textarea{
+  #ssacw-wrapper #ssacw-full .ssacw-has-input textarea{
     height: 100%;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input textarea:focus,
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input input:focus {
+  #ssacw-wrapper #ssacw-full .ssacw-has-input textarea:focus,
+  #ssacw-wrapper #ssacw-full .ssacw-has-input input:focus {
     border-color: #3b3868;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input .submit-button {
+  #ssacw-wrapper #ssacw-full .ssacw-has-input .submit-button {
     background: #3b3868;
     margin-top: 2em;
     padding: 1em 2em;
@@ -285,12 +285,12 @@
     text-transform: uppercase;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input .submit-button img {
+  #ssacw-wrapper #ssacw-full .ssacw-has-input .submit-button img {
     height: 1em;
     width: auto;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full .ssa-chat-bubble-has-input .submit-button:hover {
+  #ssacw-wrapper #ssacw-full .ssacw-has-input .submit-button:hover {
     -webkit-filter: brightness(85%);
     -ms-filter: brightness(85%);
     -moz-filter: brightness(85%);
@@ -298,7 +298,7 @@
     filter: brightness(85%);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat {
+  #ssacw-wrapper #ssacw-full #ssacw-chat {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -307,15 +307,15 @@
     background: white;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #ssa-chat-bubble-email {
+  #ssacw-wrapper #ssacw-full #ssacw-chat #ssacw-email {
     display: none;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat .submit-button {
+  #ssacw-wrapper #ssacw-full #ssacw-chat .submit-button {
     display: none;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #by {
+  #ssacw-wrapper #ssacw-full #ssacw-chat #by {
     font-size: .8em;
     position: absolute;
     right: 1rem;
@@ -335,13 +335,13 @@
     text-decoration: none;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #by span {
+  #ssacw-wrapper #ssacw-full #ssacw-chat #by span {
     color: #3b3868;
     font-weight: 500;
     white-space: nowrap;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full #ssa-chat-bubble-chat #by:hover {
+  #ssacw-wrapper #ssacw-full #ssacw-chat #by:hover {
     -webkit-opacity: 1;
     -ms-opacity: 1;
     -moz-opacity: 1;
@@ -349,34 +349,34 @@
     opacity: 1;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-header,
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-messages {
+  #ssacw-wrapper #ssacw-full.get-email #ssacw-header,
+  #ssacw-wrapper #ssacw-full.get-email #ssacw-messages {
     -webkit-filter: blur(3px);
             filter: blur(3px);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-chat {
+  #ssacw-wrapper #ssacw-full.get-email #ssacw-chat {
     display: none;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-get-email,
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-full.get-email #ssa-chat-bubble-mask {
+  #ssacw-wrapper #ssacw-full.get-email #ssacw-get-email,
+  #ssacw-wrapper #ssacw-full.get-email #ssacw-mask {
     display: block;
   }
   
-  #ssa-chat-bubble-wrapper .ssa-chat-bubble-content {
+  #ssacw-wrapper .ssacw-content {
     line-height: 1.4em;
   }
   
-  #ssa-chat-bubble-wrapper .ssa-chat-bubble-content p {
+  #ssacw-wrapper .ssacw-content p {
     margin-bottom: 1.4em;
   }
   
-  #ssa-chat-bubble-wrapper .ssa-chat-bubble-content p:last-child {
+  #ssacw-wrapper .ssacw-content p:last-child {
     margin-bottom: 0;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-teaser {
+  #ssacw-wrapper #ssacw-teaser {
     font-size: 14px;
     background: white;
     padding: 1.8em;
@@ -391,11 +391,11 @@
     bottom: 0;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-teaser:hover {
+  #ssacw-wrapper #ssacw-teaser:hover {
     background-color: #f6f6f6;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button {
+  #ssacw-wrapper #ssacw-button {
     position: absolute;
     display: inline-block;
     background: #3b3868;
@@ -411,15 +411,15 @@
     user-select: none;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button img,
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close {
+  #ssacw-wrapper #ssacw-button img,
+  #ssacw-wrapper #ssacw-button .close {
     -webkit-transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button img {
+  #ssacw-wrapper #ssacw-button img {
     width: 32px;
     height: 29px;
     position: absolute;
@@ -433,7 +433,7 @@
     opacity: 1;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close {
+  #ssacw-wrapper #ssacw-button .close {
     -webkit-opacity: 0;
     -ms-opacity: 0;
     -moz-opacity: 0;
@@ -448,8 +448,8 @@
     height: 4.28571em;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:before,
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:after {
+  #ssacw-wrapper #ssacw-button .close:before,
+  #ssacw-wrapper #ssacw-button .close:after {
     position: absolute;
     top: 1.5em;
     right: 2.07143em;
@@ -459,17 +459,17 @@
     background-color: #fff;
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:before {
+  #ssacw-wrapper #ssacw-button .close:before {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button .close:after {
+  #ssacw-wrapper #ssacw-button .close:after {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button.open img {
+  #ssacw-wrapper #ssacw-button.open img {
     -webkit-opacity: 0;
     -ms-opacity: 0;
     -moz-opacity: 0;
@@ -479,7 +479,7 @@
             transform: rotate(45deg) scale(0.7);
   }
   
-  #ssa-chat-bubble-wrapper #ssa-chat-bubble-button.open .close {
+  #ssacw-wrapper #ssacw-button.open .close {
     -webkit-opacity: 1;
     -ms-opacity: 1;
     -moz-opacity: 1;
@@ -490,7 +490,7 @@
   }
   
   
-  .ssa-chat-bubble-has-input label{
+  .ssacw-has-input label{
     padding: 1em 2em;
     display: block;
     font-size: .9em;
@@ -502,17 +502,17 @@
 
 
 
-  #ssa-chat-bubble-wrapper.is-typing label{
+  #ssacw-wrapper.is-typing label{
     display: block!important;
   }
-  #ssa-chat-bubble-wrapper.is-typing #ssa-chat-bubble-full #ssa-chat-bubble-chat{
+  #ssacw-wrapper.is-typing #ssacw-full #ssacw-chat{
     height: auto;
     top: 0;
   }
-  #ssa-chat-bubble-wrapper.is-typing #by{
+  #ssacw-wrapper.is-typing #by{
     display: none!important;
   }
-  #ssa-chat-bubble-wrapper.is-typing textarea{
+  #ssacw-wrapper.is-typing textarea{
     height: auto!important;
     position: absolute;
     left: 0;
@@ -522,6 +522,6 @@
     background: #fff!important;
   }
 
-  #ssa-chat-bubble-wrapper.is-typing #ssa-chat-bubble-full #ssa-chat-bubble-get-email{
+  #ssacw-wrapper.is-typing #ssacw-full #ssacw-get-email{
     display: block;
   }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChatBubbleEmail extends Model
+class ChatWidgetEmail extends Model
 {        
     protected $hidden = ['created_at'];
 }
