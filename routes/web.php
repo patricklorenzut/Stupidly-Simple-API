@@ -22,10 +22,10 @@ $router->post('/register', 'AuthController@register');
 $router->post('/login', 'AuthController@login');
 
 $router->get('/user/{id}/chatBubbleApps',  ['uses' => 'ChatBubbleController@showUserChatBubbleApps']);
-$router->post('/chat/{id}',  ['uses' => 'ChatBubbleController@createMessage']);
+$router->post('/chat',  ['uses' => 'ChatBubbleController@createMessage']);
 
 //email test
-$router->post('email/send/v1', 'MailgunController@emailTest');
+//$router->post('email/send/v1', 'MailgunController@emailTest');
 
 
 //protected routes

@@ -19,7 +19,7 @@ class CreateChatBubbleEmailsTable extends Migration
             $table->unsignedBigInteger('chat_bubble_app_id');
             
             $table->string('from_email');
-            $table->text('message');
+            $table->text('contents');
             $table->string('url');
 
             $table->timestamps();

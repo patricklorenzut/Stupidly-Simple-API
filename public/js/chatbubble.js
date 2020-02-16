@@ -1,6 +1,6 @@
 var ssa_chatbubble = function () {    
 
-    var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame
+    var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame, message_area
     
     function isHidden(el) {
         var style = window.getComputedStyle(el);
@@ -59,12 +59,13 @@ var ssa_chatbubble = function () {
         box_frame = document.createElement('iframe');
         box_frame.setAttribute('id','ssa-chat-bubble-chat-frame')
         box_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssa-chat-bubble-wrapper" style="display:none;"> <div id="ssa-chat-bubble-full"> <div id="ssa-chat-bubble-header"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssa-chat-bubble-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssa-chat-bubble-mask"></div><div id="ssa-chat-bubble-get-email" class="ssa-chat-bubble-has-input"><p>' + settings.email_required_message + '</p><input type="email" id="ssa-chat-bubble-email-input" placeholder="your@email.com"/> <span class="submit-button" id="email-submit-button"> <img src="' + base_url + '/img/send.png" alt="" width="32" height="29"/> </span> </div><div id="ssa-chat-bubble-chat" class="ssa-chat-bubble-has-input"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssa-chat-bubble-message"></textarea><input type="email" required name="email" id="ssa-chat-bubble-email"/> <a id="by" href="https://stupidlysimple.app/?utm_source=chat_bubble_widget" target="_blank">powered by <span>stupidly simple</span></a> <span class="submit-button" id="message-submit-button"> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div></div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssa-chat-bubble-wrapper" style="display:none;"> <div id="ssa-chat-bubble-full"> <div id="ssa-chat-bubble-header"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssa-chat-bubble-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssa-chat-bubble-mask"></div><div id="ssa-chat-bubble-get-email" class="ssa-chat-bubble-has-input"><label>Email Address (only used to reply)</label><input type="email" id="ssa-chat-bubble-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <span class="submit-button" id="email-submit-button"> Submit Message </span> </div><div id="ssa-chat-bubble-chat" class="ssa-chat-bubble-has-input"> <form action="' + base_url + '/contact" method="post"> <label>Message</label><textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssa-chat-bubble-message"></textarea> <a id="by" href="https://stupidlysimple.app/?utm_source=chat_bubble_widget" target="_blank">powered by <span>stupidly simple</span></a> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div></div></div></body>';
         box_frame_wrapper.appendChild(box_frame);
         box_frame.contentWindow.document.open();
         box_frame.contentWindow.document.write(html);
         box_frame.contentWindow.document.close(); 
     }
+ 
 
     var observe;
     if (window.attachEvent) {
@@ -90,78 +91,57 @@ var ssa_chatbubble = function () {
             toggle_box()
         });
 
-        var message_area = box_frame.contentDocument.getElementById('ssa-chat-bubble-message')
-        function resize () {
-            var content_length = message_area.value.length
-            if(content_length == 0){
-                box_frame.contentDocument.getElementById("message-submit-button").style.display = 'none'
-                box_frame.contentDocument.getElementById("by").style.display = 'block'
-            }else{
-                box_frame.contentDocument.getElementById("message-submit-button").style.display = 'block'
-                box_frame.contentDocument.getElementById("by").style.display = 'none'
-            }            
-            message_area.style.height = 'auto';
-            message_area.style.height = message_area.scrollHeight+'px';
-        }
-        function delayedResize () {
-            window.setTimeout(resize, 0);
-        }
-
-        //when textarea is typed in
-        observe(message_area, 'change',  resize);
-        observe(message_area, 'cut',     delayedResize);
-        observe(message_area, 'paste',   delayedResize);
-        observe(message_area, 'drop',    delayedResize);
-        observe(message_area, 'keydown', delayedResize);
-
-        message_area.focus();
-        message_area.select();
-        resize(); 
+        message_area = box_frame.contentDocument.getElementById('ssa-chat-bubble-message')
         
-        box_frame.contentDocument.getElementById("message-submit-button").click(function(){
-            console.log('message submit button')
-            submit_textarea();
+        
+        function isTyping () {
+            box_frame.contentDocument.getElementById("ssa-chat-bubble-wrapper").classList = 'is-typing'
+        }
+
+        observe(message_area, 'change',  isTyping);
+        observe(message_area, 'cut',     isTyping);
+        observe(message_area, 'paste',   isTyping);
+        observe(message_area, 'drop',    isTyping);
+        observe(message_area, 'keydown', isTyping);
+        
+        box_frame.contentDocument.getElementById("email-submit-button").addEventListener("click", function(){
+            submit_email();
         }); 
     }    
 
-    function submit_textarea(){
-        //check to see if we have an email address for this person.
-        if(settings.email){ //if so and it's fresh, send this message through.
-            submit_message();
-        }
-        else{ //if not, get the email.
-            box_frame.contentDocument.getElementById('chatthingy-full').classList.add('get-email');
-            box_frame.contentDocument.getElementById('ssa-chat-bubble-email-input').focus();
-            enter_email();
-        }
-    }
-
-    function enter_email(){
-        box_frame.contentDocument.getElementById('ssa-chat-bubble-email-input').addEventListener("click", function(e){
-            if(e.which == 13){  // the enter key code
-                e.preventDefault();
-                submit_email();
-            }
-        });
-        
-
-        box_frame.contentDocument.getElementById('email-submit-button').addEventListener("click", function(){
-            submit_email();
-        });
-        
+    function validate_email(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     function submit_email(){
-        // var email = chat_frame.find('#chatthingy-get-email input').val();
-        // if(is_valid_email_address(email)){
-        //     chat_frame.find('#chatthingy-full form input[name="email"]').val(email);
-        //     Cookies.set('chatthingy-email-' + settings.app_id, email, { expires: 365 });
-        //     settings.email = email;
-        //     submit_message();            
-        // }else{
-        //     //flash an error
-        //     console.log('invalid email address');
-        // }     
+        
+        var visitor_email = box_frame.contentDocument.getElementById('ssa-chat-bubble-email-input').value;
+        if(validate_email(visitor_email)){
+            var message_contents = message_area.value
+
+            message_area.value = ''
+            box_frame.contentDocument.getElementById("ssa-chat-bubble-wrapper").classList = ''
+            hide_box()        
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", base_url + '/chat', true);
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {                
+                }
+            };
+
+            var data = new FormData();
+            data.append('app_id', settings.app_id);
+            data.append('token', settings.token);
+            data.append('message', message_contents);
+            data.append('email', visitor_email);
+            xhttp.send(data);
+
+            alert('Your email has been sent successfully! And you’ve been CCed for your records.')
+        }else{
+            alert('You’ve entered an invalid email address. A valid email address is required in order to get in contact with you. But don’t worry, you will NOT be added to any email lists, your data will not be sold, etc.')
+        }
     }
 
     /******** starting point for your widget ********/
@@ -178,27 +158,30 @@ var ssa_chatbubble = function () {
         settings.title = 'How Can I Help?'
         settings.welcome_message = 'Hey there! Is there anything I can help you with? Send me a message and I’ll get back to you ASAP.'
         settings.message_prompt = 'Drop me a line.'
-        settings.email_required_message = 'Please leave your email address so I can get back to you.'
         
         if(settings.we){
             settings.title = 'How Can We Help?'
             settings.welcome_message = 'Hey there! Is there anything we can help you with? Send us a message and we’ll get back to you ASAP.'
             settings.message_prompt = 'Drop us a line.'
-            settings.email_required_message = 'Please leave your email address so we can get back to you.'
         }
 
+        if(!settings.visitor_email){
+            settings.visitor_email = ''
+        }
 
-        //build urls
-        outside_frame_css = base_url + '/css/chatbubble-frames.css'
-        inside_frame_css = base_url + '/css/chatbubble.css'
-        chat_image = base_url + '/img/chat.png'
+        if(settings.token && settings.app_id){
+            //build urls
+            outside_frame_css = base_url + '/css/chatbubble-frames.css'
+            inside_frame_css = base_url + '/css/chatbubble.css'
+            chat_image = base_url + '/img/chat.png'
 
-        //load frame css
-        document.querySelector('head').innerHTML += '<link rel="stylesheet" href="' + outside_frame_css + '" type="text/css"/>'
+            //load frame css
+            document.querySelector('head').innerHTML += '<link rel="stylesheet" href="' + outside_frame_css + '" type="text/css"/>'
 
-        setup_button_frame()
-        setup_box_frame()
-        add_listeners()
+            setup_button_frame()
+            setup_box_frame()
+            add_listeners()
+        }
 
     }
 
