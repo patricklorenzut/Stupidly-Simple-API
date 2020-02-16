@@ -136,6 +136,7 @@ var ssa_chatbubble = function () {
             data.append('token', settings.token);
             data.append('message', message_contents);
             data.append('email', visitor_email);
+            data.append('url', window.location.href);
             xhttp.send(data);
 
             alert('Your email has been sent successfully! And you’ve been CCed for your records.')

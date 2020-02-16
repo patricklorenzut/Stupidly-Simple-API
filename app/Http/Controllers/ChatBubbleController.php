@@ -38,7 +38,8 @@ class ChatBubbleController extends Controller
             'email' => 'required|email',
             'token' => 'required',
             'app_id' => 'required|exists:chat_bubble_apps,id',
-            'message' => 'required'
+            'message' => 'required',
+            'url' => 'required'
         ]);
 
         if($cba = ChatBubbleApp::where('id',$request['app_id'])->where('token',$request['token'])->first()){
@@ -48,7 +49,7 @@ class ChatBubbleController extends Controller
             $new_message->user_id = $cba->user_id;
             $new_message->contents = $request['message'];
             $new_message->from_email = $request['email'];
-            $new_message->url = 'temp';
+            $new_message->url = $request['url'];
             $new_message->save();
 
             
