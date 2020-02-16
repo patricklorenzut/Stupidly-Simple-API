@@ -68,25 +68,13 @@ var ssa_chatwidget = function () {
         box_frame = document.createElement('iframe');
         box_frame.setAttribute('id','ssacw-chat-frame')
         box_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header" class="ssacw-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt=""/> </div></div><div id="ssacw-messages"><div><div class="default">' + settings.welcome_message + '</div></div></div><div id="ssacw-mask"></div><div id="ssacw-chat" class="ssacw-has-input"> <form action="' + base_url + '/contact" method="post"> <label>Message</label><textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> <a id="by" href="https://stupidlysimple.app/?utm_source=ssa_chatwidget" target="_blank">powered by <span>stupidly simple</span></a> <img src="' + base_url + '/img/send.png" alt=""/> </span> </form> </div><div id="ssacw-get-email" class="ssacw-has-input"><label>Email Address (only used to reply)</label><input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <span id="email-submit-button" class="ssacw-bg-color"> Submit Message </span> </div></div></div></body>';
+        var html = '<head> <link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body> <div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header" class="ssacw-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt="Close"/> </div></div><div id="ssacw-chat"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> </form> </div><div id="ssacw-get-email"> <input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <p id="ssacw-email-disclaimer">Your email address will be used ONLY to respond to this inquiry. You will not be added to any lists.</p><span id="email-submit-button" class="ssacw-bg-color"> Submit Message </span> </div></div></div></body>';
         box_frame_wrapper.appendChild(box_frame);
         box_frame.contentWindow.document.open();
         box_frame.contentWindow.document.write(html);
         box_frame.contentWindow.document.close(); 
     }
- 
-
-    var observe;
-    if (window.attachEvent) {
-        observe = function (element, event, handler) {
-            element.attachEvent('on'+event, handler);
-        };
-    }
-    else {
-        observe = function (element, event, handler) {
-            element.addEventListener(event, handler, false);
-        };
-    }    
+  
 
     function add_listeners(){
 
@@ -101,17 +89,6 @@ var ssa_chatwidget = function () {
         });
 
         message_area = box_content.getElementById('ssacw-message')
-        
-        
-        function isTyping () {
-            box_content.getElementById("ssacw-wrapper").classList = 'is-typing'
-        }
-
-        observe(message_area, 'change',  isTyping);
-        observe(message_area, 'cut',     isTyping);
-        observe(message_area, 'paste',   isTyping);
-        observe(message_area, 'drop',    isTyping);
-        observe(message_area, 'keydown', isTyping);
         
         box_content.getElementById("email-submit-button").addEventListener("click", function(){
             submit_email();
@@ -130,7 +107,6 @@ var ssa_chatwidget = function () {
             var message_contents = message_area.value
 
             message_area.value = ''
-            box_content.getElementById("ssacw-wrapper").classList = ''
             hide_box()        
             
             var xhttp = new XMLHttpRequest();
@@ -150,7 +126,6 @@ var ssa_chatwidget = function () {
             xhttp.send(data);
 
             setTimeout(function(){ alert('Your email has been sent successfully! And you’ve been CCed for your records.') }, 1000);
-
             
         }else{
             alert('You’ve entered an invalid email address. A valid email address is required in order to get in contact with you. But don’t worry, you will NOT be added to any email lists, your data will not be sold, etc.')
@@ -169,13 +144,11 @@ var ssa_chatwidget = function () {
         }
         
         settings.title = 'How Can I Help?'
-        settings.welcome_message = 'Hey there! Is there anything I can help you with? Send me a message and I’ll get back to you ASAP.'
-        settings.message_prompt = 'Drop me a line.'
+        settings.message_prompt = 'Write me a message.'
         
         if(settings.we){
             settings.title = 'How Can We Help?'
-            settings.welcome_message = 'Hey there! Is there anything we can help you with? Send us a message and we’ll get back to you ASAP.'
-            settings.message_prompt = 'Drop us a line.'
+            settings.message_prompt = 'Write us a message.'
         }
 
         if(!settings.visitor_email){
