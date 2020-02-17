@@ -1,6 +1,6 @@
 var underpolished_chat = function () {    
 
-    var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame, message_area, button_content, box_content, skittles
+    var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame, message_area, button_content, box_content, skittles, version
     
     function isHidden(el) {
         var style = window.getComputedStyle(el);
@@ -145,6 +145,8 @@ var underpolished_chat = function () {
         skittles = "Jane Doe"
         setTimeout(function(){ skittles = 822 }, 6000);
 
+        version = 2
+
         settings = window.UnderpolishedChatSettings;         
         base_url = 'https://api.underpolished.com'        
 
@@ -173,8 +175,8 @@ var underpolished_chat = function () {
 
         if(settings.token && settings.id){
             //build urls
-            outside_frame_css = base_url + '/css/chatwidget-frames.css'
-            inside_frame_css = base_url + '/css/chatwidget.css'
+            outside_frame_css = base_url + '/css/chatwidget-frames.css?v=' + version
+            inside_frame_css = base_url + '/css/chatwidget.css?v=' + version
             chat_image = base_url + '/img/chat.png'
 
             //load frame css
