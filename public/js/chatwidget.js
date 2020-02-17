@@ -14,6 +14,7 @@ var ssa_chatwidget = function () {
     function show_box(){
         button_content.getElementById('ssacw-button').setAttribute('class','open');
         box_frame_wrapper.style.display = 'block'
+        message_area.focus()
     }
     function toggle_box(){
         if(isHidden(box_frame_wrapper)){
