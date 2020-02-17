@@ -18,8 +18,18 @@ class ChatWidgetController extends Controller
             'token' => 'required',
             'id' => 'required|exists:users',
             'message' => 'required',
-            'url' => 'required'
+            'url' => 'required',
+            'name' => 'required|integer'
         ]);
+
+        if($request->name != 822){
+            return response()->json(['message' => 'Not today, junior.'], 403);
+        }
+
+        //spam protection is going to look like this temporarily:
+        //1: check how many requests this token has received in the last 10 seconds.
+        //if more than 5, disable
+        //of course this won't work if a site gets hundreds of thousands of visitors, but whatever, we aren't serving those people.
 
         if($user = User::where('id',$request['id'])->where('token',$request['token'])->first()){
 

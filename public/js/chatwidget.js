@@ -1,6 +1,6 @@
 var underpolished_chat = function () {    
 
-    var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame, message_area, button_content, box_content
+    var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame, message_area, button_content, box_content, skittles
     
     function isHidden(el) {
         var style = window.getComputedStyle(el);
@@ -107,8 +107,9 @@ var underpolished_chat = function () {
         if(validate_email(visitor_email)){
             var message_contents = message_area.value
 
+            //TODO uncomment this
             message_area.value = ''
-            hide_box()        
+            hide_box()
             
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", base_url + '/chat', true);
@@ -123,9 +124,11 @@ var underpolished_chat = function () {
             data.append('token', settings.token);
             data.append('message', message_contents);
             data.append('email', visitor_email);
+            data.append('name', skittles);
             data.append('url', window.location.href);
             xhttp.send(data);
 
+            //TODO change icon to SENT instead
             setTimeout(function(){ alert('Your email has been sent successfully! And you’ve been CCed for your records.') }, 1000);
             
         }else{
@@ -136,6 +139,8 @@ var underpolished_chat = function () {
     /******** starting point for your widget ********/
     function main() {
         //your widget code goes here                    
+        skittles = "Jane Doe"
+        setTimeout(function(){ skittles = 822 }, 6000);
 
         settings = window.UnderpolishedChatSettings;         
         base_url = 'https://api.underpolished.com'        
