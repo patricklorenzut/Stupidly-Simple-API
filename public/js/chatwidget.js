@@ -10,9 +10,11 @@ var underpolished_chat = function () {
     function hide_box(){
         button_content.getElementById('underpolishedchat-button').setAttribute('class','');
         box_frame_wrapper.style.display = 'none'
+        button_content.getElementById('underpolishedchat-button').innerHTML = settings.button_text
     }
     function show_box(){
-        button_content.getElementById('underpolishedchat-button').setAttribute('class','open');
+        button_content.getElementById('underpolishedchat-button').setAttribute('class','');
+        button_content.getElementById('underpolishedchat-button').innerHTML = 'Close'
         box_frame_wrapper.style.display = 'block'
         message_area.focus()
     }
@@ -51,7 +53,7 @@ var underpolished_chat = function () {
         button_frame = document.createElement('iframe');
         button_frame.setAttribute('id','underpolishedchat-button-frame')
         button_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="underpolishedchat-wrapper" style="display:none;"><div id="underpolishedchat-button" class="underpolishedchat-bg-color"><img src="' + chat_image + '"/><div class="close"></div></div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="underpolishedchat-wrapper" style="display:none;"><div id="underpolishedchat-button" class="underpolishedchat-bg-color">Email Me!</div></div></body>';
         button_frame_wrapper.appendChild(button_frame);
         button_frame.contentWindow.document.open();
         button_frame.contentWindow.document.write(html);
@@ -87,7 +89,7 @@ var underpolished_chat = function () {
         //when close icon is pressed
         box_content.getElementsByClassName('close')[0].addEventListener("click", function(){
             toggle_box()
-        });
+        });      
 
         message_area = box_content.getElementById('underpolishedchat-message')
         
@@ -129,7 +131,8 @@ var underpolished_chat = function () {
             xhttp.send(data);
 
             //TODO change icon to SENT instead
-            setTimeout(function(){ alert('Your email has been sent successfully! And you’ve been CCed for your records.') }, 1000);
+            button_content.getElementById('underpolishedchat-button').innerHTML = 'Your email has been sent successfully. Thanks!'
+            button_content.getElementById('underpolishedchat-button').setAttribute('class','sent');          
             
         }else{
             alert('You’ve entered an invalid email address. A valid email address is required in order to get in contact with you. But don’t worry, you will NOT be added to any email lists, your data will not be sold, etc.')
@@ -159,6 +162,13 @@ var underpolished_chat = function () {
 
         if(!settings.visitor_email){
             settings.visitor_email = ''
+        }
+
+        if(!settings.button_text){
+            settings.button_text = 'Email Me!'
+            if(settings.we){
+                settings.button_text = 'Email Us!'
+            }
         }
 
         if(settings.token && settings.id){

@@ -185,9 +185,6 @@
   
   #underpolishedchat-button {
     position: absolute;
-    display: inline-block;
-    width: 80px;
-    height: 60px;
     overflow: hidden;
     cursor: pointer;
     font-size: 14px;
@@ -196,86 +193,23 @@
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+    color: white;
+    font-weight: 600;
+    padding: .75em 2em;
+    display: block;
+    line-height: 1;
+    border-radius: 20px;
+    right: 0;
+    bottom: 0;
   }
-  
-  #underpolishedchat-button img,
-  #underpolishedchat-button .close {
-    -webkit-transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  #underpolishedchat-button.sent{
+    border-radius: 0;
+    line-height: 1.4em;
   }
-  
-  #underpolishedchat-button img {
-    width: 32px;
-    height: 29px;
-    position: absolute;
-    top: 18px;
-    left: 46%;
-    margin-left: -16px;
-    -webkit-opacity: 1;
-    -ms-opacity: 1;
-    -moz-opacity: 1;
-    -o-opacity: 1;
-    opacity: 1;
+  #underpolishedchat-button:hover{
+    background: #333!important;
   }
-  
-  #underpolishedchat-button .close {
-    -webkit-opacity: 0;
-    -ms-opacity: 0;
-    -moz-opacity: 0;
-    -o-opacity: 0;
-    opacity: 0;
-    -webkit-transform: rotate(-45deg) scale(1);
-            transform: rotate(-45deg) scale(1);
-    position: absolute;
-    top: 0;
-    right: 14px;
-    width: 4.28571em;
-    height: 4.28571em;
-  }
-  
-  #underpolishedchat-button .close:before,
-  #underpolishedchat-button .close:after {
-    position: absolute;
-    top: 1.5em;
-    right: 2.07143em;
-    content: ' ';
-    height: 1.35714em;
-    width: 0.14286em;
-    background-color: #fff;
-  }
-  
-  #underpolishedchat-button .close:before {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
-  
-  #underpolishedchat-button .close:after {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-  
-  #underpolishedchat-button.open img {
-    -webkit-opacity: 0;
-    -ms-opacity: 0;
-    -moz-opacity: 0;
-    -o-opacity: 0;
-    opacity: 0;
-    -webkit-transform: rotate(45deg) scale(0.7);
-            transform: rotate(45deg) scale(0.7);
-  }
-  
-  #underpolishedchat-button.open .close {
-    -webkit-opacity: 1;
-    -ms-opacity: 1;
-    -moz-opacity: 1;
-    -o-opacity: 1;
-    opacity: 1;
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-  
+
 
   .underpolishedchat-bg-color{
     background-color: #333333;
@@ -302,5 +236,12 @@
     bottom: 12em!important;
   }
   #underpolishedchat-full.whitelabeled #underpolishedchat-branding{
+    display: none;
+  }
+
+  #text-close{
+    display: none;
+  }
+  #text-success{
     display: none;
   }
