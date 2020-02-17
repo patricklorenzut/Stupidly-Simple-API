@@ -37,27 +37,44 @@
   }
   
   #ssacw-wrapper {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    position: absolute;
+    overflow-y: scroll;
     display: block !important;
   }
   
-  #ssacw-wrapper #ssacw-full {
+  #ssacw-full {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
     background: #eee;
     z-index: 2;
+    height: 100%;
+    min-height: 600px;
   }
   
   @media screen and (min-width: 370px) {
-    #ssacw-wrapper #ssacw-full #ssacw-chat {
+    #ssacw-chat {
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
+
+    #ssacw-wrapper {
+      overflow-y: none;
+    }
+    
+    #ssacw-full {
+      bottom: 0;
+      height: auto;
+      min-height: 0;
+    }
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-header {
+  #ssacw-header {
     border-bottom: 1px solid #eaeced;
     -webkit-box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
             box-shadow: 0 1px 0.8rem rgba(0, 0, 0, 0.05);
@@ -69,7 +86,7 @@
     padding: 1em;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-header .close {
+  #ssacw-header .close {
     position: absolute;
     cursor: pointer;
     -webkit-opacity: 0.45;
@@ -83,12 +100,12 @@
     text-align: center;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-header .close img {
+  #ssacw-header .close img {
     width: 1em;
     height: 1em;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-header .close:hover {
+  #ssacw-header .close:hover {
     -webkit-opacity: 1;
     -ms-opacity: 1;
     -moz-opacity: 1;
@@ -96,7 +113,7 @@
     opacity: 1;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-header strong {
+  #ssacw-header strong {
     vertical-align: middle;
     font-weight: 500;
     margin-left: .75em;
@@ -105,25 +122,17 @@
   }
   
   
-  #ssacw-wrapper #ssacw-full #ssacw-get-email {
+  #ssacw-get-email {
     position: absolute;
     bottom: 1em;
     left: 1em;
     right: 1em;
     z-index: 3;
   }
-  
-  
-  @media screen and (min-width: 768px) and (min-height: 700px) {
-    #ssacw-wrapper #ssacw-full #ssacw-get-email {
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-  }
 
   
-  #ssacw-wrapper #ssacw-full textarea,
-  #ssacw-wrapper #ssacw-full input {
+  #ssacw-full textarea,
+  #ssacw-full input {
     width: 100%;
     border: none;
     font-size: 16px;
@@ -134,21 +143,18 @@
     outline: none;  
     border-radius: 4px;  
   }
-  #ssacw-wrapper #ssacw-full input {
-    
-  }
-  #ssacw-wrapper #ssacw-full textarea{
+  #ssacw-full textarea{
     height: 100%;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
   
-  #ssacw-wrapper #ssacw-full textarea:focus,
-  #ssacw-wrapper #ssacw-full input:focus {
+  #ssacw-full textarea:focus,
+  #ssacw-full input:focus {
     border-color: #3b3868;
   }
   
-  #ssacw-wrapper #ssacw-full #email-submit-button {
+  #email-submit-button {
     margin-top: 2em;
     padding: 1em 2em;
     border-radius: 4px;
@@ -168,51 +174,15 @@
     text-transform: uppercase;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-chat {
+  #ssacw-chat {
     position: absolute;
-    bottom: 12em;
+    bottom: 13em;
     left: 1em;
     right: 1em;
     top: 4em;
   }
   
-  #ssacw-wrapper #ssacw-full #ssacw-chat #ssacw-email {
-    display: none;
-  }
-  
-  
-  #ssacw-wrapper .ssacw-content {
-    line-height: 1.4em;
-  }
-  
-  #ssacw-wrapper .ssacw-content p {
-    margin-bottom: 1.4em;
-  }
-  
-  #ssacw-wrapper .ssacw-content p:last-child {
-    margin-bottom: 0;
-  }
-  
-  #ssacw-wrapper #ssacw-teaser {
-    font-size: 14px;
-    background: white;
-    padding: 1.8em;
-    border-radius: 20px;
-    -moz-border-bottom-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    width: 100%;
-    background-color: #fff;
-    color: rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    position: absolute;
-    bottom: 0;
-  }
-  
-  #ssacw-wrapper #ssacw-teaser:hover {
-    background-color: #f6f6f6;
-  }
-  
-  #ssacw-wrapper #ssacw-button {
+  #ssacw-button {
     position: absolute;
     display: inline-block;
     width: 80px;
@@ -227,15 +197,15 @@
     user-select: none;
   }
   
-  #ssacw-wrapper #ssacw-button img,
-  #ssacw-wrapper #ssacw-button .close {
+  #ssacw-button img,
+  #ssacw-button .close {
     -webkit-transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  #ssacw-wrapper #ssacw-button img {
+  #ssacw-button img {
     width: 32px;
     height: 29px;
     position: absolute;
@@ -249,7 +219,7 @@
     opacity: 1;
   }
   
-  #ssacw-wrapper #ssacw-button .close {
+  #ssacw-button .close {
     -webkit-opacity: 0;
     -ms-opacity: 0;
     -moz-opacity: 0;
@@ -264,8 +234,8 @@
     height: 4.28571em;
   }
   
-  #ssacw-wrapper #ssacw-button .close:before,
-  #ssacw-wrapper #ssacw-button .close:after {
+  #ssacw-button .close:before,
+  #ssacw-button .close:after {
     position: absolute;
     top: 1.5em;
     right: 2.07143em;
@@ -275,17 +245,17 @@
     background-color: #fff;
   }
   
-  #ssacw-wrapper #ssacw-button .close:before {
+  #ssacw-button .close:before {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
   }
   
-  #ssacw-wrapper #ssacw-button .close:after {
+  #ssacw-button .close:after {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
   }
   
-  #ssacw-wrapper #ssacw-button.open img {
+  #ssacw-button.open img {
     -webkit-opacity: 0;
     -ms-opacity: 0;
     -moz-opacity: 0;
@@ -295,7 +265,7 @@
             transform: rotate(45deg) scale(0.7);
   }
   
-  #ssacw-wrapper #ssacw-button.open .close {
+  #ssacw-button.open .close {
     -webkit-opacity: 1;
     -ms-opacity: 1;
     -moz-opacity: 1;
@@ -306,19 +276,30 @@
   }
   
 
-  #ssacw-wrapper.is-typing #ssacw-full #ssacw-chat{
-    height: auto;
-    top: 0;
-  }
-
   .ssacw-bg-color{
     background-color: #333333;
   }
-
-
 
   #ssacw-email-disclaimer{
     opacity: .3;
     font-size: .9em;
     margin: .5rem;
+  }
+
+  #ssacw-branding{
+    opacity: .3;
+    font-size: .9em;
+    margin: .5rem 0 0;
+    text-align: center;
+  }
+  #ssacw-branding a{
+    color: inherit;
+  }
+
+
+  #ssacw-full.whitelabeled #ssacw-chat {
+    bottom: 12em!important;
+  }
+  #ssacw-full.whitelabeled #ssacw-branding{
+    display: none;
   }

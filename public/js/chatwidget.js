@@ -69,7 +69,7 @@ var ssa_chatwidget = function () {
         box_frame = document.createElement('iframe');
         box_frame.setAttribute('id','ssacw-chat-frame')
         box_frame.setAttribute('scrolling','no')
-        var html = '<head> <link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body> <div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header" class="ssacw-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt="Close"/> </div></div><div id="ssacw-chat"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> </form> </div><div id="ssacw-get-email"> <input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <p id="ssacw-email-disclaimer">Your email address will be used ONLY to respond to this inquiry. You will not be added to any lists.</p><span id="email-submit-button" class="ssacw-bg-color"> Submit Message </span> </div></div></div></body>';
+        var html = '<head> <link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body> <div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header" class="ssacw-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt="Close"/> </div></div><div id="ssacw-chat"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> </form> </div><div id="ssacw-get-email"> <input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <p id="ssacw-email-disclaimer">Your email address will be used ONLY to respond to this inquiry. You will not be added to any lists.</p><span id="email-submit-button" class="ssacw-bg-color"> Submit Message </span><p id="ssacw-branding"><a href="https://stupidlysimple.app" target="_blank">Stupidly Simple</a></p> </div></div></div></body>';
         box_frame_wrapper.appendChild(box_frame);
         box_frame.contentWindow.document.open();
         box_frame.contentWindow.document.write(html);
@@ -170,6 +170,10 @@ var ssa_chatwidget = function () {
 
             button_content = button_frame.contentDocument
             box_content = box_frame.contentDocument
+
+            if(settings.whitelabel){
+                box_content.getElementById('ssacw-full').classList = 'whitelabeled'
+            }
 
             add_listeners()
         }

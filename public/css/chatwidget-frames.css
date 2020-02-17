@@ -80,7 +80,7 @@
   
   @media screen and (min-width: 768px) and (min-height: 700px) {
     #ssacw-chat-frame-wrapper {
-      top: 150px;
+      top: 100px;
       right: 30px;
       bottom: 100px;
       border-radius: 8px;
