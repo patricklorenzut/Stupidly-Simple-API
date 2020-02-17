@@ -22,9 +22,6 @@ $router->post('/register', 'AuthController@register');
 $router->post('/login', 'AuthController@login');
 $router->post('/chat',  ['uses' => 'ChatWidgetController@createMessage']);
 
-//email test
-//$router->post('email/send/v1', 'MailgunController@emailTest');
-
 
 //protected routes
 $router->group(['middleware' => 'auth'], function () use ($router) {

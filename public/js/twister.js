@@ -1,6 +1,6 @@
 var titletwister = function () {
 
-    var titles = window.StupidlySimpleTitles;
+    var titles = window.UnderpolishedTitles;
           
     var titles = titles.split("///")
 

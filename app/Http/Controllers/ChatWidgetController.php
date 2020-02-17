@@ -42,7 +42,7 @@ class ChatWidgetController extends Controller
                         <br/><br/>
                         ---
                         <br/><br/>
-                        This message was sent via <a href="https://stupidlysimple.app">Stupidly Simple Chat Widget</a> installed on '.$new_message->url.'<br/>
+                        This message was sent via <a href="https://underpolished.com">Underpolished Chat</a> installed on '.$new_message->url.'<br/>
                         Simply click "Reply" to continue the conversation.
                     '
                     , 'text/html');

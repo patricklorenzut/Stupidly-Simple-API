@@ -1,4 +1,4 @@
-var ssa_chatwidget = function () {    
+var underpolished_chat = function () {    
 
     var settings, base_url, outside_frame_css, inside_frame_css, chat_image, button_frame_wrapper, box_frame_wrapper, button_frame, box_frame, message_area, button_content, box_content
     
@@ -8,11 +8,11 @@ var ssa_chatwidget = function () {
     }
 
     function hide_box(){
-        button_content.getElementById('ssacw-button').setAttribute('class','');
+        button_content.getElementById('underpolishedchat-button').setAttribute('class','');
         box_frame_wrapper.style.display = 'none'
     }
     function show_box(){
-        button_content.getElementById('ssacw-button').setAttribute('class','open');
+        button_content.getElementById('underpolishedchat-button').setAttribute('class','open');
         box_frame_wrapper.style.display = 'block'
         message_area.focus()
     }
@@ -26,13 +26,13 @@ var ssa_chatwidget = function () {
     }
 
     function swap_colors(color){
-        var elements = button_content.getElementsByClassName('ssacw-bg-color');
+        var elements = button_content.getElementsByClassName('underpolishedchat-bg-color');
             for (var i in elements) {
             if (elements.hasOwnProperty(i)) {
                 elements[i].style.backgroundColor = color;
             }
         }
-        var elements = box_content.getElementsByClassName('ssacw-bg-color');
+        var elements = box_content.getElementsByClassName('underpolishedchat-bg-color');
             for (var i in elements) {
             if (elements.hasOwnProperty(i)) {
                 elements[i].style.backgroundColor = color;
@@ -43,15 +43,15 @@ var ssa_chatwidget = function () {
     function setup_button_frame(){
         //frame wrapper
         button_frame_wrapper = document.createElement("div")
-        button_frame_wrapper.setAttribute('id', 'ssacw-button-frame-wrapper')
-        button_frame_wrapper.classList.add('ssacw-frame-wrapper')
+        button_frame_wrapper.setAttribute('id', 'underpolishedchat-button-frame-wrapper')
+        button_frame_wrapper.classList.add('underpolishedchat-frame-wrapper')
         document.body.appendChild(button_frame_wrapper)
             
         //inner
         button_frame = document.createElement('iframe');
-        button_frame.setAttribute('id','ssacw-button-frame')
+        button_frame.setAttribute('id','underpolishedchat-button-frame')
         button_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="ssacw-wrapper" style="display:none;"><div id="ssacw-button" class="ssacw-bg-color"><img src="' + chat_image + '"/><div class="close"></div></div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="underpolishedchat-wrapper" style="display:none;"><div id="underpolishedchat-button" class="underpolishedchat-bg-color"><img src="' + chat_image + '"/><div class="close"></div></div></div></body>';
         button_frame_wrapper.appendChild(button_frame);
         button_frame.contentWindow.document.open();
         button_frame.contentWindow.document.write(html);
@@ -61,15 +61,15 @@ var ssa_chatwidget = function () {
     function setup_box_frame(){
         //frame wrapper
         box_frame_wrapper = document.createElement("div")
-        box_frame_wrapper.setAttribute('id', 'ssacw-chat-frame-wrapper')
-        box_frame_wrapper.classList.add('ssacw-frame-wrapper')
+        box_frame_wrapper.setAttribute('id', 'underpolishedchat-chat-frame-wrapper')
+        box_frame_wrapper.classList.add('underpolishedchat-frame-wrapper')
         document.body.appendChild(box_frame_wrapper)
             
         //inner
         box_frame = document.createElement('iframe');
-        box_frame.setAttribute('id','ssacw-chat-frame')
+        box_frame.setAttribute('id','underpolishedchat-chat-frame')
         box_frame.setAttribute('scrolling','no')
-        var html = '<head> <link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body> <div id="ssacw-wrapper" style="display:none;"> <div id="ssacw-full"> <div id="ssacw-header" class="ssacw-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt="Close"/> </div></div><div id="ssacw-chat"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="ssacw-message"></textarea> </form> </div><div id="ssacw-get-email"> <input type="email" id="ssacw-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <p id="ssacw-email-disclaimer">Your email address will be used ONLY to respond to this inquiry. You will not be added to any lists.</p><span id="email-submit-button" class="ssacw-bg-color"> Submit Message </span><p id="ssacw-branding"><a href="https://stupidlysimple.app" target="_blank">Stupidly Simple</a></p> </div></div></div></body>';
+        var html = '<head> <link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body> <div id="underpolishedchat-wrapper" style="display:none;"> <div id="underpolishedchat-full"> <div id="underpolishedchat-header" class="underpolishedchat-bg-color"> <strong>' + settings.title + '</strong> <div class="close"> <img src="' + base_url + '/img/close.png" alt="Close"/> </div></div><div id="underpolishedchat-chat"> <form action="' + base_url + '/contact" method="post"> <textarea required name="message" placeholder="' + settings.message_prompt + '" id="underpolishedchat-message"></textarea> </form> </div><div id="underpolishedchat-get-email"> <input type="email" id="underpolishedchat-email-input" placeholder="your@email.com" value="' + settings.visitor_email + '" required/> <p id="underpolishedchat-email-disclaimer">Your email address will be used ONLY to respond to this inquiry. You will not be added to any lists.</p><span id="email-submit-button" class="underpolishedchat-bg-color"> Submit Message </span><p id="underpolishedchat-branding"><a href="https://underpolished.com" target="_blank">Underpolished Chat</a></p> </div></div></div></body>';
         box_frame_wrapper.appendChild(box_frame);
         box_frame.contentWindow.document.open();
         box_frame.contentWindow.document.write(html);
@@ -80,7 +80,7 @@ var ssa_chatwidget = function () {
     function add_listeners(){
 
         //when button is pressed
-        button_content.getElementById("ssacw-button").addEventListener("click", function(){
+        button_content.getElementById("underpolishedchat-button").addEventListener("click", function(){
             toggle_box()
         });
 
@@ -89,7 +89,7 @@ var ssa_chatwidget = function () {
             toggle_box()
         });
 
-        message_area = box_content.getElementById('ssacw-message')
+        message_area = box_content.getElementById('underpolishedchat-message')
         
         box_content.getElementById("email-submit-button").addEventListener("click", function(){
             submit_email();
@@ -103,7 +103,7 @@ var ssa_chatwidget = function () {
 
     function submit_email(){
         
-        var visitor_email = box_content.getElementById('ssacw-email-input').value;
+        var visitor_email = box_content.getElementById('underpolishedchat-email-input').value;
         if(validate_email(visitor_email)){
             var message_contents = message_area.value
 
@@ -137,8 +137,8 @@ var ssa_chatwidget = function () {
     function main() {
         //your widget code goes here                    
 
-        settings = window.SSAChatWidgetSettings;         
-        base_url = 'https://api.stupidlysimple.app'        
+        settings = window.UnderpolishedChatSettings;         
+        base_url = 'https://api.underpolished.com'        
 
         if(settings.dev){
             base_url = 'http://localhost:8000'
@@ -172,7 +172,7 @@ var ssa_chatwidget = function () {
             box_content = box_frame.contentDocument
 
             if(settings.whitelabel){
-                box_content.getElementById('ssacw-full').classList = 'whitelabeled'
+                box_content.getElementById('underpolishedchat-full').classList = 'whitelabeled'
             }
 
             add_listeners()
