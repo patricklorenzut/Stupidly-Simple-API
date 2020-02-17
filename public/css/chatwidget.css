@@ -54,7 +54,7 @@
     background: #eee;
     z-index: 2;
     height: 100%;
-    min-height: 600px;
+    min-height: 400px;
   }
   
   @media screen and (width: 370px) {
