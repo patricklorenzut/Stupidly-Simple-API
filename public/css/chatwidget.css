@@ -57,7 +57,7 @@
     min-height: 600px;
   }
   
-  @media screen and (min-width: 370px) {
+  @media screen and (width: 370px) {
     #ssacw-chat {
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
@@ -73,6 +73,7 @@
       min-height: 0;
     }
   }
+  
   
   #ssacw-header {
     border-bottom: 1px solid #eaeced;
