@@ -8,12 +8,12 @@ var underpolished_chat = function () {
     }
 
     function hide_box(){
-        button_content.getElementById('underpolishedchat-button').setAttribute('class','');
+        button_content.getElementById('underpolishedchat-button').setAttribute('class','underpolishedchat-bg-color');
         box_frame_wrapper.style.display = 'none'
         button_content.getElementById('underpolishedchat-button').innerHTML = settings.button_text
     }
     function show_box(){
-        button_content.getElementById('underpolishedchat-button').setAttribute('class','');
+        button_content.getElementById('underpolishedchat-button').setAttribute('class','underpolishedchat-bg-color');
         button_content.getElementById('underpolishedchat-button').innerHTML = 'Close'
         box_frame_wrapper.style.display = 'block'
         message_area.focus()
@@ -53,7 +53,7 @@ var underpolished_chat = function () {
         button_frame = document.createElement('iframe');
         button_frame.setAttribute('id','underpolishedchat-button-frame')
         button_frame.setAttribute('scrolling','no')
-        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="underpolishedchat-wrapper" style="display:none;"><div id="underpolishedchat-button" class="underpolishedchat-bg-color">Email Me!</div></div></body>';
+        var html = '<head><link rel="stylesheet" href="' + inside_frame_css + '" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="underpolishedchat-wrapper" style="display:none;"><div id="underpolishedchat-button" class="underpolishedchat-bg-color">' + settings.button_text + '</div></div></body>';
         button_frame_wrapper.appendChild(button_frame);
         button_frame.contentWindow.document.open();
         button_frame.contentWindow.document.write(html);
@@ -132,7 +132,7 @@ var underpolished_chat = function () {
 
             //TODO change icon to SENT instead
             button_content.getElementById('underpolishedchat-button').innerHTML = 'Your email has been sent successfully. Thanks!'
-            button_content.getElementById('underpolishedchat-button').setAttribute('class','sent');          
+            button_content.getElementById('underpolishedchat-button').setAttribute('class','underpolishedchat-bg-color sent');          
             
         }else{
             alert('You’ve entered an invalid email address. A valid email address is required in order to get in contact with you. But don’t worry, you will NOT be added to any email lists, your data will not be sold, etc.')
