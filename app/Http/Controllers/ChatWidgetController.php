@@ -12,6 +12,24 @@ use Illuminate\Support\Facades\Mail;
 class ChatWidgetController extends Controller
 {
     
+    public function switch(){
+        Mail::send([], [], function ($message) {
+            $message->to('patrick.lorenzut@gmail.com')
+                ->subject('Chat Thingy is being replaced')
+                ->setBody('<p>Hello person.</p>
+
+                <p><a href="https://chatthingy.com/">Chat Thingy</a> is being replaced by <a href="https://underpolished.com/">Underpolished Chat</a>. Underpolished is simpler and 100% private. Unlike Chat Thingy, it’s paid... but for all Chat Thingy users I’ll do my best to make sure that it stays free for life.</p>
+                
+                <p>If you’d like help migrating please just reply to this email.</p>
+                
+                <p>You are receiving this email because you created a Chat Thingy account. This is a one-time account-related notification and you have not been added to any email lists.</p>
+                
+                <p>Cheers,</p>
+                <p>Patrick</p>'
+                , 'text/html');
+          });
+    }
+
     public function createMessage(REQUEST $request){
         $this->validate($request, [
             'email' => 'required|email',
@@ -45,7 +63,6 @@ class ChatWidgetController extends Controller
                 $message->to($user->email)
                     ->subject('New message from '.$new_message->from_email)              
                     ->replyTo($new_message->from_email)
-                    ->cc($new_message->from_email)
                     ->setBody('
                         <strong>'.$new_message->from_email.' said:</strong><br/><br/>
                         '.nl2br($new_message->contents).'
